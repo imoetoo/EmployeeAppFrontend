@@ -1,25 +1,21 @@
+// can omit in newer react files : import React from 'react';
+import "./App.css";
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import MainMenuPage from './pages/MainMenuPage/MainMenu.tsx';    
+import {Router,Routes,Route} from "react-router-dom";
+import {AddEmployeeForm} from "./pages/AddEmployeePage/addEmployeeForm.tsx";
+import { EditEmployeePage } from "./pages/AddEmployeePage/editEmployeePage.tsx";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Routes>
+        <Route path="/" element={<MainMenuPage />} />
+        <Route path="/add-employee" element={<AddEmployeeForm />} />
+        <Route path = "/update-employee/:id" element = {<EditEmployeePage/>} />
+      </Routes>
     </div>
+
   );
 }
 
