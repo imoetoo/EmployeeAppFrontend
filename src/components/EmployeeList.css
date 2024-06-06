@@ -56,6 +56,32 @@
     margin-right:10px;
 }
 
+.previous-button:hover{
+    font-weight:bold;
+    text-decoration:underline;
+}
+
+.previous-button:disabled{
+    background-color:#cccccc;
+    cursor:not-allowed;
+    color:#666666;
+    text-decoration: none;
+    font-weight:normal;
+}
+
 .next-button{
     margin-left:10px;
+}
+
+.next-button:hover{
+    font-weight:bold;
+    text-decoration:underline;
+}
+
+.next-button:disabled{
+    background-color:#cccccc;
+    cursor:not-allowed;
+    color:#666666;
+    text-decoration: none;
+    font-weight:normal;
 }
