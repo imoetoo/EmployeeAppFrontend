@@ -2,6 +2,10 @@
 
 Run this program, together with the CRUDAPIBackend application, for the fullstack application experience
 
+Implemented the project using: React, Redux, Redux RTK Query, CSS, TypeScript, Redux Toolkit
+
+Packages: react-router-dom
+
 ## Available Scripts
 
 In the project directory, you can run:
