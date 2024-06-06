@@ -11,6 +11,7 @@ export const EditEmployeePage: React.FC = () => {
   const [showPopUp, setShowPopUp] = useState(false);
   const navigate = useNavigate();
   const [editHandler] = useUpdateEmployeeMutation();
+  //use Params retrieves the id number from the URL
   let {id} = useParams<{id:string}>();
 
 

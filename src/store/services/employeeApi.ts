@@ -19,6 +19,15 @@ type APIResponse<T> = {
     message: string;
 }
 
+type APIPaginationResponse<K> = {
+  data: K;
+  totalItems: number;
+  totalPages: number;
+  currentPage: number;
+  status: string;
+  message: string;
+}
+
 // const employeeSlice = createSlice({
 //     name: 'employee',
 //     initialState: initialEmployeeState,
@@ -46,8 +55,8 @@ export const employeeApi = createApi({
   tagTypes: ['Employees'],
   endpoints: (builder) => ({
     //expected response is an array of Employee objects. The 2nd parameter is for argument passed to query function. The query does not take any arguments(just fetching) so use void to indicate no params needed
-    getEmployees: builder.query<APIResponse<Employee[]>, void>({
-      query: () => `employees`,
+    getEmployees: builder.query<APIPaginationResponse<Employee[]>, {page:number}>({
+      query: ({page}) => `employees?page=${page}`,
       providesTags:['Employees']
     }),
     //first argument is the expected return type, the 2nd is the parameter types inputted

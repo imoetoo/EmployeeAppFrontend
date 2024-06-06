@@ -42,3 +42,20 @@
 .employeeCard button{
     margin-right: 10px;
 }
+
+.paginator-container{
+    justify-content: space-between;
+    display:flex;
+}
+
+.paginator{
+    margin-right:10px;
+}
+
+.previous-button{
+    margin-right:10px;
+}
+
+.next-button{
+    margin-left:10px;
+}
