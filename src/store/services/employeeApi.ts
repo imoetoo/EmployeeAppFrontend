@@ -1,17 +1,17 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { Employee } from "../../models/Employee";
 
-interface EmployeeState {
-  employees: Employee[];
-  loading: boolean;
-  error: String | null;
-}
+// interface EmployeeState {
+//   employees: Employee[];
+//   loading: boolean;
+//   error: String | null;
+// }
 
-let initialEmployeeState: EmployeeState = {
-  employees: [],
-  loading: false,
-  error: null,
-};
+// let initialEmployeeState: EmployeeState = {
+//   employees: [],
+//   loading: false,
+//   error: null,
+// };
 
 type APIResponse<T> = {
     data: T;

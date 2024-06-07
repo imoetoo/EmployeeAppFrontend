@@ -2,7 +2,7 @@
 import "./App.css";
 import React from "react";
 import MainMenuPage from "./pages/MainMenuPage/MainMenu.tsx";
-import { Router, Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { AddEmployeeForm } from "./pages/AddEmployeePage/addEmployeeForm.tsx";
 import { EditEmployeePage } from "./pages/EditEmployeePage/editEmployeePage.tsx";
 /*

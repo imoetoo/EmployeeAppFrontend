@@ -17,11 +17,12 @@ location object representing the current URL.
 eg:
 https://www.example.com/?key1=value1&key2=value2#section1
 
-location object: 3 parameters, pathname, search and hash
+location object: 3 parameters, pathname, search and hash. If you want, u can also have a state parameter
 location ={
   pathname: "/",
   search: "?key1=value1&key2=value2",
   hash: "#section1",
+  state : passed from navigate function: look at employeeCard.tsx for more details
 }
   This means that location.search will give the value of "?key1=value1&key2=value2"
 */

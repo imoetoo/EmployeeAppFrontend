@@ -1,18 +1,33 @@
 import React, { useState } from "react";
 import { useUpdateEmployeeMutation } from "../../store/services/employeeApi.ts";
-import { useNavigate,useParams} from "react-router-dom";
+import { useNavigate,useParams,useLocation} from "react-router-dom";
 
 
 export const EditEmployeePage: React.FC = () => {
-  const [name, setName] = useState("");
-  const [department, setDepartment] = useState("");
-  const [salary, setSalary] = useState(0);
-  const [showPopUp, setShowPopUp] = useState(false);
+  //useLocation fetches the employee data from employeeCard component, which is passed as a prop to the EditEmployeePage component
+  const location = useLocation();
+  //destructuring the employee object from the state parameter
+  let {employee} = location.state;
+  /*
+  if employee is NOT destructured, it will look like such:
+  {
+  employee: {
+    id: ...,
+    name: ...,
+    salary: ...,
+    department: ...
+    }
+  }
+  */
+
   const navigate = useNavigate();
+  const [name, setName] = useState(employee.name);
+  const [department, setDepartment] = useState(employee.department);
+  const [salary, setSalary] = useState(employee.salary);
+  const [showPopUp, setShowPopUp] = useState(false);
   const [editHandler] = useUpdateEmployeeMutation();
   //use Params retrieves the id number from the URL
   let {id} = useParams<{id:string}>();
-
 
   return (
     <div className="form-container">
@@ -25,7 +40,7 @@ export const EditEmployeePage: React.FC = () => {
         <div className="form-input">
           <input
             type="text"
-            placeholder="name"
+            placeholder= "name"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />

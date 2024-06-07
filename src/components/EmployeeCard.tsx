@@ -12,13 +12,15 @@ interface EmployeeCardProps {
 export const EmployeeCard: React.FC<EmployeeCardProps> = ({ employee }) => {
   const navigate = useNavigate();
   const navigateUpdateHandler = () => {
-    navigate(`/update-employee/${employee.id}`);
+    navigate(`/update-employee/${employee.id}`, {state: {employee}});
   };
   const [showPopUp, setShowPopUp] = useState(false);
 
   const deleteHandler = () => {
     setShowPopUp(true);
   };
+
+
 
   return (
     <div className="employeeCard">
