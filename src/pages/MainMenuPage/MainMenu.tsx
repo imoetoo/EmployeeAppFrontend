@@ -23,6 +23,7 @@ location ={
   search: "?key1=value1&key2=value2",
   hash: "#section1",
 }
+  This means that location.search will give the value of "?key1=value1&key2=value2"
 */
 
 
@@ -30,7 +31,7 @@ const MainMenuPage: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
-  const pageParam = queryParams.get("page");
+  const pageParam = queryParams.get("page"); //this gets the value of page. if url is http://localhost:3001/search?page=2 then this returns 2
   const [page,setPage] = useState(pageParam ? +pageParam : 1);
 
 
@@ -47,10 +48,19 @@ const MainMenuPage: React.FC = () => {
   },[location.search]);
 
 
+
   function pageChangeHandler(newPage:number){
     setPage(newPage);
     navigate(`/search?page=${newPage}`);
   };
+
+  //Navigates to the previous page if the number of employees after deletion is 0
+  function setEmployeeCount(count:number){
+    if(count === 0){
+      const newPage = Math.max(1,page-1);
+      navigate(`/search?page=${newPage}`);
+    }
+  }
 
   return (
     <div className="main-menu-page">
@@ -59,7 +69,7 @@ const MainMenuPage: React.FC = () => {
         <button className="add-employee-button" onClick={navigateHandler}>Add Employee</button>
       </div>
       <div className="employee-list">
-        <EmployeeList currentPage={page} onPageChange = {pageChangeHandler}/>
+        <EmployeeList currentPage={page} onPageChange = {pageChangeHandler} onEmployeeCountChange= {setEmployeeCount}/>
       </div>
     </div>
   );

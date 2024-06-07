@@ -4,7 +4,7 @@ import React from "react";
 import MainMenuPage from "./pages/MainMenuPage/MainMenu.tsx";
 import { Router, Routes, Route, Navigate } from "react-router-dom";
 import { AddEmployeeForm } from "./pages/AddEmployeePage/addEmployeeForm.tsx";
-import { EditEmployeePage } from "./pages/AddEmployeePage/editEmployeePage.tsx";
+import { EditEmployeePage } from "./pages/EditEmployeePage/editEmployeePage.tsx";
 /*
 
 The line <Route path="/" element={<Navigate to="/search?page=1" replace />} /> in the React Router configuration is used to automatically redirect users from the root URL (i.e., http://localhost:3001/) to another URL with query parameters (http://localhost:3001/search?page=1).

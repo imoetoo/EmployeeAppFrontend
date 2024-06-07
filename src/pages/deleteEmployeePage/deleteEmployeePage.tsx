@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDeleteEmployeeMutation } from '../../store/services/employeeApi.ts';
-import './addEmployeeForm.css'
+import './deleteEmployeePage.css';
 
 interface DeleteEmployeePopUpProps {
   employeeId: number;
@@ -13,6 +13,7 @@ export const DeleteEmployeePopUp: React.FC<DeleteEmployeePopUpProps> = ({ employ
   const handleDelete = async () => {
     await deleteEmployee(employeeId);
     onClose(); // Close the popup after deletion
+    
   };
 
   return (

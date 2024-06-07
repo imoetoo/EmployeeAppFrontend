@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Employee } from "../models/Employee.ts";
 import { useNavigate } from "react-router-dom";
-import { DeleteEmployeePopUp } from "../pages/AddEmployeePage/deleteEmployee.tsx";
+import { DeleteEmployeePopUp } from "../pages/deleteEmployeePage/deleteEmployeePage.tsx";
 
 interface EmployeeCardProps {
   employee: Employee;

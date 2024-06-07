@@ -58,3 +58,11 @@
     margin-left: 10px;
   }
   
+  .form-input {
+    margin-bottom: 10px;
+  }
+  
+  .error {
+    color: red;
+    font-size: 0.875em;
+  }

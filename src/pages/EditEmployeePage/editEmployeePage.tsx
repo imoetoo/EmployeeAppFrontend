@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useUpdateEmployeeMutation } from "../../store/services/employeeApi.ts";
 import { useNavigate,useParams} from "react-router-dom";
-import "./addEmployeeForm.css";
 
 
 export const EditEmployeePage: React.FC = () => {
