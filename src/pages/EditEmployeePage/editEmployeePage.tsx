@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { useUpdateEmployeeMutation } from "../../store/services/employeeApi.ts";
 import { useNavigate,useParams,useLocation} from "react-router-dom";
-
+import {EmployeeForm} from "../../components/EmployeeForm.tsx";
+import { validate } from "../AddEmployeePage/validateUserInput.tsx";
+import { PopUp } from "../../components/popUp.tsx";
 
 export const EditEmployeePage: React.FC = () => {
   //useLocation fetches the employee data from employeeCard component, which is passed as a prop to the EditEmployeePage component
@@ -21,68 +23,36 @@ export const EditEmployeePage: React.FC = () => {
   */
 
   const navigate = useNavigate();
-  const [name, setName] = useState(employee.name);
-  const [department, setDepartment] = useState(employee.department);
-  const [salary, setSalary] = useState(employee.salary);
+  // const [name, setName] = useState(employee.name);
+  // const [department, setDepartment] = useState(employee.department);
+  // const [salary, setSalary] = useState(employee.salary);
   const [showPopUp, setShowPopUp] = useState(false);
   const [editHandler] = useUpdateEmployeeMutation();
   //use Params retrieves the id number from the URL
   let {id} = useParams<{id:string}>();
+  const [errors, setErrors] = useState<{
+    name?: string;
+    department?: string;
+    salary?: string;
+  }>({});
+
+
+  const submitForm = async (userInput:{name:string, salary:number, department:string}) => {
+    const validationErrors = validate(userInput);
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    } else {
+      editHandler({ data: { id: Number(id), ...userInput } });
+      setShowPopUp(true);
+    }
+  };
 
   return (
-    <div className="form-container">
-      <form
-        onSubmit={(e) => {
-          e.preventDefault(); //prevents triggering the default behaviour of the form
-          editHandler({ data: { id: Number(id), name, salary, department } });
-        }}
-      >
-        <div className="form-input">
-          <input
-            type="text"
-            placeholder= "name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-        </div>
-        <div className="form-input">
-          <select
-            id="department"
-            value={department}
-            onChange={(e) => setDepartment(e.target.value)}
-          >
-            <option value="" disabled hidden>
-              Choose the Department
-            </option>
-            <option value="HR">HR</option>
-            <option value="PS">PS</option>
-          </select>
-        </div>
-        <div className="form-input">
-          <input
-            type="text"
-            placeholder="salary"
-            value={salary}
-            onChange={(e) => setSalary(+e.target.value)}
-          />
-        </div>
-
-        <button type="submit" onClick={() => setShowPopUp(true)}>
-          Update Employee
-        </button>
-      </form>
+    <div>
+    <EmployeeForm submitFunction = {submitForm} errors = {errors} initialValues = {employee} isEdit = {true}/>
       {showPopUp && (
-        <div className="popup">
-          <div>Employee Changed</div>
-          <button
-            onClick={() => {
-              setShowPopUp(false);
-              navigate("/");
-            }}
-          >
-            Close
-          </button>
-        </div>
+        <PopUp message = {"Employee Changed"} onClose = {() => setShowPopUp(false)}/>
       )}
     </div>
   );

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useGetEmployeesQuery } from "../store/services/employeeApi";
-import { EmployeeCard } from "./EmployeeCard";
+import { EmployeeCard } from "./employeeCard";
 import { Employee } from "../models/Employee";
 import "./EmployeeList.css";
 
@@ -31,7 +31,7 @@ export const EmployeeList: React.FC<EmployeeListProps> = ({
   //To allow main menu page to know the number of employees on the page, to redirect to tthe previous page if number of employees is 0
   useEffect(() => {
     onEmployeeCountChange(employees.length);
-  }, [employees.length]);
+  }, [employees.length,]);
 
   if (isLoading) {
     return <div>Loading...</div>;
