@@ -23,9 +23,6 @@ export const EditEmployeePage: React.FC = () => {
   */
 
   const navigate = useNavigate();
-  // const [name, setName] = useState(employee.name);
-  // const [department, setDepartment] = useState(employee.department);
-  // const [salary, setSalary] = useState(employee.salary);
   const [showPopUp, setShowPopUp] = useState(false);
   const [editHandler] = useUpdateEmployeeMutation();
   //use Params retrieves the id number from the URL
@@ -37,7 +34,7 @@ export const EditEmployeePage: React.FC = () => {
   }>({});
 
 
-  const submitForm = async (userInput:{name:string, salary:number, department:string}) => {
+  const updatedEmployeeValues = async (userInput:{name:string, salary:number, department:string}) => {
     const validationErrors = validate(userInput);
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
@@ -50,7 +47,7 @@ export const EditEmployeePage: React.FC = () => {
 
   return (
     <div>
-    <EmployeeForm submitFunction = {submitForm} errors = {errors} initialValues = {employee} isEdit = {true}/>
+    <EmployeeForm userInputValues = {updatedEmployeeValues} errors = {errors} initialValues = {employee} isEdit = {true}/>
       {showPopUp && (
         <PopUp message = {"Employee Changed"} onClose = {() => setShowPopUp(false)}/>
       )}

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 interface EmployeeFormProps {
-    submitFunction:(userInput: {name: string, department: string, salary: number})=>void;
+    userInputValues:(userInput: {name: string, department: string, salary: number})=>void;
     errors:{
         name?: string;
         department?: string;
@@ -11,14 +11,14 @@ interface EmployeeFormProps {
     isEdit: boolean;
 }
 
-export const EmployeeForm: React.FC<EmployeeFormProps> = ({submitFunction,errors,initialValues,isEdit}) => {
+export const EmployeeForm: React.FC<EmployeeFormProps> = ({userInputValues,errors,initialValues,isEdit}) => {
   const [name, setName] = useState(initialValues?.name || "");
   const [department, setDepartment] = useState(initialValues?.department ||"");
   const [salary, setSalary] = useState(initialValues?.salary || 0);
   
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    submitFunction({name, department, salary});
+    userInputValues({name, department, salary});
   }
 
   return (

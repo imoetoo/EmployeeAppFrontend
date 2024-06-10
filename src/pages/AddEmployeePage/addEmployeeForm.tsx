@@ -3,7 +3,7 @@ import { useAddEmployeeMutation } from "../../store/services/employeeApi.ts";
 import "./addEmployeeForm.css";
 import { validate } from "./validateUserInput.tsx";
 import { EmployeeForm } from "../../components/EmployeeForm.tsx";
-import {PopUp} from "../../components/popUp.tsx";
+import { PopUp } from "../../components/popUp.tsx";
 
 export const AddEmployeeForm: React.FC = () => {
   const [submitHandler] = useAddEmployeeMutation();
@@ -14,7 +14,7 @@ export const AddEmployeeForm: React.FC = () => {
     salary?: string;
   }>({});
 
-  const submitForm = async (userInput:{name:string; salary:number; department:string;}) => {
+  const employeeValues = async (userInput:{name:string; salary:number; department:string;}) => {
     const validationErrors = validate(userInput);
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
@@ -27,7 +27,7 @@ export const AddEmployeeForm: React.FC = () => {
 
   return (
     <div className="form-container">
-      <EmployeeForm submitFunction={submitForm} errors={errors} isEdit = {false}/>
+      <EmployeeForm userInputValues={employeeValues} errors={errors} isEdit = {false}/>
       {showPopUp && (
         <PopUp message = {"Employee Added"} onClose = {() => setShowPopUp(false)}/>
       )}
