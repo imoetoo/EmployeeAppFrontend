@@ -1,0 +1,43 @@
+.form-container {
+  width: 300px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form-input {
+  margin-bottom: 10px;
+  margin-right: 45px;
+}
+
+.form-input input,
+.form-input select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form-input select {
+  appearance: none;
+}
+
+.form-input button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.error {
+  color: red;
+  font-size: 0.875em;
+}
+
+.form-input {
+  margin-bottom: 10px;
+}

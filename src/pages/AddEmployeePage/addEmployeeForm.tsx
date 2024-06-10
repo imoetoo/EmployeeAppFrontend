@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useAddEmployeeMutation } from "../../store/services/employeeApi.ts";
-import "./addEmployeeForm.css";
 import { validate } from "./validateUserInput.tsx";
 import { EmployeeForm } from "../../components/EmployeeForm.tsx";
 import { PopUp } from "../../components/popUp.tsx";
@@ -26,7 +25,7 @@ export const AddEmployeeForm: React.FC = () => {
   };
 
   return (
-    <div className="form-container">
+    <div>
       <EmployeeForm userInputValues={employeeValues} errors={errors} isEdit = {false}/>
       {showPopUp && (
         <PopUp message = {"Employee Added"} onClose = {() => setShowPopUp(false)}/>
